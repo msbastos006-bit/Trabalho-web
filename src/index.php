@@ -10,7 +10,8 @@
     <nav>
     </nav>
     <main>
-        <form action="processar_formulario.php" method="post">
+        <form action="processar_formulario.php" method="POST">
+            
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 

@@ -1,0 +1,10 @@
+* { 
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #797979;
+    padding: 20px;
+    text-align: center;
+}
