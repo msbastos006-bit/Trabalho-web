@@ -15,7 +15,19 @@
     </header>
 
     <main>
+        <h2>Lista de Livros</h2>
+        <?php
+        include 'conexao.php';
+        $smts = $pdo->query("SELECT * FROM `livros`");
+        $livros = $smts->fetchAll();
 
+        foreach ($livros as $livro) {
+            echo "<div class='livro'>";
+            echo "<h3>" . $livro['Titulo'] . "</h3>";
+            echo "<p>Autor: " . $livro['Autor'] . "</p>";
+            echo "</div>";
+        }
+        ?>
     </main>
 
     <footer>

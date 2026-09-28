@@ -8,6 +8,7 @@
 <body>
 </body>
     <nav>
+
     </nav>
     <main>
         <form action="processar_formulario.php" method="POST">
@@ -19,8 +20,9 @@
             <input type="password" id="senha" name="senha" required>    
 
             <button type="submit">Enviar</button>
+        </form>
+        <button><a href="criar_conta.php">Criar Conta</a></button>
     </main>
-
     <footer>
         <p>&copy; 2023 Nome do Site. Todos os direitos reservados.</p>
     </footer>
