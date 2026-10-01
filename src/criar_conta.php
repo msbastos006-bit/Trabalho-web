@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">]
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -40,9 +41,13 @@ if (isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) &&
         echo "<script>alert('As senhas não coincidem. Por favor, tente novamente.');</script>";
     } else {
         include 'conexao.php';
-        $query = "INSERT INTO `usuario`(`Nome`, `Email`, `Senha`) VALUES ('$nome', '$email', '$senha')";
-        $stmt = $pdo->query($query);
-
+        $query = "INSERT INTO `usuario`(`Nome`, `Email`, `Senha`) VALUES (':nome', ':email', ':senha')";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([
+            ':nome' => $nome,
+            ':email' => $email,
+            ':senha' => $senha
+        ]);
 
         echo "<script>alert('Conta criada com sucesso!');</script>"; 
         $pdo->close();

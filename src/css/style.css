@@ -1,10 +1,29 @@
+:root{
+    --deepWalnut: #492d0f;
+    --brownBark: #65391d;
+    --toffeBrowmn: #835d46;
+    --dustyTaupe: #a0806f;
+    --lavanderBlush: #e7dada;
+    --bloodRed: #910005;
+}
+
+
+
+
 * { 
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--lavanderBlush);
+    color: var(--deepWalnut);
+}
+
+
 header {
-    background-color: #797979;
+    background-color: var(--lavanderBlush);
     padding: 20px;
     text-align: center;
 }
