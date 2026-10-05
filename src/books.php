@@ -25,6 +25,7 @@
             echo "<div class='livro'>";
             echo "<h3>" . $livro['Titulo'] . "</h3>";
             echo "<p>Autor: " . $livro['Autor'] . "</p>";
+            echo "<img src='img/capas/" . $livro['imagem_capa'] . "' alt='" . $livro['Titulo'] . "'>";
             echo "</div>";
         }
         ?>
