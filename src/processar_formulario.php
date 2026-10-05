@@ -2,10 +2,11 @@
     if (!empty($_POST ['email']) && !empty($_POST['senha'])) {
     try {
         include_once 'conexao.php';
-        $query = "SELECT * FROM `usuario` WHERE `Email` = '{$_POST['email']}' AND `Senha` = '{$_POST['senha']}'";
+        $query = "SELECT * FROM `usuario` WHERE `Email` = :email AND `Senha` = :senha";
 
-        $stmt= $pdo->query($query);
-
+        $stmt = $pdo->prepare($query);   
+        $stmt->execute([':email' => $_POST['email'], 
+                        ':senha' => $_POST['senha']]);
         $usuario = $stmt->fetch();
 
             if (!empty($usuario)) {
