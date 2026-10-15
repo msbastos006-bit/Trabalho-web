@@ -21,7 +21,7 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
             </a>
             <div class="user-nav">
                 <span class="user-greeting">Bem-vindo(a), <strong><?php echo $nomeUsuario; ?></strong>!</span>
-                <a href="index.php" class="btn-logout" title="Encerrar sessão">Sair</a>
+                <a href="logout.php" class="btn-logout" title="Encerrar sessão">Sair</a>
             </div>
         </div>
     </header>
@@ -43,13 +43,16 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
 
                 if (!empty($livros)) {
                     foreach ($livros as $livro) {
+
                         $titulo = htmlspecialchars($livro['Titulo']);
                         $autor = htmlspecialchars($livro['Autor']);
                         $capa = !empty($livro['imagem_capa']) ? 'img/capas/' . htmlspecialchars(trim($livro['imagem_capa'])) : 'img/default-book.png';
                         
                         echo "<article class='livro'>";
                         echo "<div class='livro-cover-wrapper'>";
+                        echo "<a href='book_details.php?id_livro=" . $livro['ID_livro'] . "'>";
                         echo "<img src='" . $capa . "' alt='Capa de " . $titulo . "' loading='lazy'>";
+                        echo "</a>";
                         echo "</div>";
                         echo "<div class='livro-info'>";
                         echo "<div>";
@@ -57,7 +60,7 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                         echo "<p>Por " . $autor . "</p>";
                         echo "</div>";
                         echo "<div class='livro-actions'>";
-                        echo "<button type='button' class='btn-borrow'>Empréstimo</button>";
+                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "' class='btn-borrow'>Empréstimo</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</article>";
