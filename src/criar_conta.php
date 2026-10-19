@@ -57,6 +57,7 @@
 
 
 <?php
+    include 'conexao.php';
 // Processamento do formulário de criação de conta
 if (isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) && isset($_POST["confirmSenha"])) {
     $nome = $_POST["nome"];
@@ -64,11 +65,22 @@ if (isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) &&
     $senha = $_POST["senha"];
     $confirmSenha = $_POST["confirmSenha"];
 
+        $query = "SELECT `Email` FROM `usuario` WHERE `Email` = :email";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([
+            ':email' => $email
+        ]);
+
+        if ($stmt->rowCount() > 0) {
+            echo "<script>alert('Este e-mail já está cadastrado. Por favor, use outro e-mail ou verifique se já não possui uma conta.');</script>";
+            exit;
+        }
+
     // Validação das entradas
     if ($senha !== $confirmSenha) {
         echo "<script>alert('As senhas não coincidem. Por favor, tente novamente.');</script>";
-    } else {
-        include 'conexao.php';
+    } else{
+        
         $query = "INSERT INTO `usuario`(`Nome`, `Email`, `Senha`) VALUES (':nome', ':email', ':senha')";
         $stmt = $pdo->prepare($query);
         $stmt->execute([
