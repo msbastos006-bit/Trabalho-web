@@ -72,7 +72,7 @@ if (isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) &&
         ]);
 
         if ($stmt->rowCount() > 0) {
-            echo "<script>alert('Este e-mail já está cadastrado. Por favor, use outro e-mail ou verifique se já não possui uma conta.');</script>";
+            echo "<script>alert('Este e-mail já está cadastrado. Por favor, verifique se já não possui uma conta.');</script>";
             exit;
         }
 

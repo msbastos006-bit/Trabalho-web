@@ -454,6 +454,12 @@ header.app-header {
     text-decoration: none;
 }
 
+.btn-borrow:disabled {
+    background-color: var(--bloodRed);
+    cursor: not-allowed;
+    color: var(--bloodRed);
+}
+
 /* Estado de catálogo vazio */
 .empty-catalog {
     grid-column: 1 / -1;
