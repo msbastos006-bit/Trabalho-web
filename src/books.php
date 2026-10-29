@@ -1,6 +1,7 @@
 <?php
 session_start();
 $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 'Visitante';
+$idUsuario = isset($_SESSION['ID_usuario']) ? $_SESSION['ID_usuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -52,6 +53,7 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                         echo "<div class='livro-cover-wrapper'>";
                         echo "<a href='book_details.php?id_livro=" . $livro['ID_livro'] . "'>";
                         echo "<img src='" . $capa . "' alt='Capa de " . $titulo . "' loading='lazy'>";
+                        echo "<img src='img/esgotado-br.png' alt='Livro esgotado' loading='lazy'>";
                         echo "</a>";
                         echo "</div>";
                         echo "<div class='livro-info'>";
@@ -60,7 +62,7 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                         echo "<p>Por " . $autor . "</p>";
                         echo "</div>";
                         echo "<div class='livro-actions'>";
-                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "' class='btn-borrow'>Empréstimo</a>";
+                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "& id_usuario=" . $idUsuario . "' class='btn-borrow'>Empréstimo</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</article>";
