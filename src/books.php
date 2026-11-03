@@ -1,7 +1,7 @@
 <?php
 session_start();
 $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 'Visitante';
-$idUsuario = isset($_SESSION['ID_usuario']) ? $_SESSION['ID_usuario'] : null;
+$idUsuario = isset($_SESSION['id_usuario']) ? htmlspecialchars($_SESSION['id_usuario']) : 'Desconhecido';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -21,7 +21,7 @@ $idUsuario = isset($_SESSION['ID_usuario']) ? $_SESSION['ID_usuario'] : null;
                 <span>Biblioteca</span>
             </a>
             <div class="user-nav">
-                <span class="user-greeting">Bem-vindo(a), <strong><?php echo $nomeUsuario; ?></strong>!</span>
+                <span class="user-greeting">Bem-vindo(a), <strong><?php echo $idUsuario; ?></strong>!</span>
                 <a href="logout.php" class="btn-logout" title="Encerrar sessão">Sair</a>
             </div>
         </div>
@@ -62,7 +62,7 @@ $idUsuario = isset($_SESSION['ID_usuario']) ? $_SESSION['ID_usuario'] : null;
                         echo "<p>Por " . $autor . "</p>";
                         echo "</div>";
                         echo "<div class='livro-actions'>";
-                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "& id_usuario=" . $idUsuario . "' class='btn-borrow'>Empréstimo</a>";
+                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] ."' class='btn-borrow'>Empréstimo</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</article>";
