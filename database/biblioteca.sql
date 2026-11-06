@@ -1,9 +1,9 @@
-  -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/10/2026 às 13:06
+-- Tempo de geração: 06/11/2026 às 13:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -31,8 +31,20 @@ CREATE TABLE `aluguel` (
   `id_livro` int(11) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `data_inicio` date DEFAULT NULL,
-  `data_final` date DEFAULT NULL
+  `data_final` date DEFAULT NULL,
+  `id_aluguel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`id_livro`, `id_usuario`, `data_inicio`, `data_final`, `id_aluguel`) VALUES
+(74, 1, '2026-11-03', '2026-11-18', 8),
+(2, 1, '2026-11-06', '2026-11-21', 9),
+(4, 1, '2026-11-06', '2026-11-21', 10),
+(2, 1, '2026-11-06', '2026-11-21', 11),
+(14, 1, '2026-11-06', '2026-11-21', 12);
 
 -- --------------------------------------------------------
 
@@ -53,7 +65,7 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`ID_livro`, `Titulo`, `Autor`, `Quant`, `imagem_capa`) VALUES
-(1, 'Dom Casmurro', 'Machado de Assis', 1, 'Dom Casmurro.jpg'),
+(1, 'Dom Casmurro', 'Machado de Assis', 0, 'Dom Casmurro.jpg'),
 (2, 'Memórias Póstumas de Brás Cubas', 'Machado de Assis', 4, 'Memórias Póstumas de Brás Cubas.jpg'),
 (3, 'O Cortiço', 'Aluísio Azevedo', 6, 'O Cortiço.jpg'),
 (4, 'Grande Sertão: Veredas', 'João Guimarães Rosa', 3, 'Grande Sertão.jpg'),
@@ -168,8 +180,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`ID_usuario`, `Nome`, `Email`, `Senha`) VALUES
-(1, 'matheus', 'msbastos006@f', '123'),
-(2, 'matheus', 'msbastos006@f', '123');
+(1, 'matheus', 'msbastos006@f', '123');
 
 --
 -- Índices para tabelas despejadas
@@ -179,6 +190,7 @@ INSERT INTO `usuario` (`ID_usuario`, `Nome`, `Email`, `Senha`) VALUES
 -- Índices de tabela `aluguel`
 --
 ALTER TABLE `aluguel`
+  ADD PRIMARY KEY (`id_aluguel`),
   ADD KEY `fk_aluguel_livro` (`id_livro`),
   ADD KEY `fk_aluguel_usuario` (`id_usuario`);
 
@@ -197,6 +209,12 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  MODIFY `id_aluguel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
@@ -218,7 +236,7 @@ ALTER TABLE `usuario`
 -- Restrições para tabelas `aluguel`
 --
 ALTER TABLE `aluguel`
-  ADD CONSTRAINT `fk_aluguel_livro` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`),
+  ADD CONSTRAINT `fk_aluguel_livro` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`ID_livro`),
   ADD CONSTRAINT `fk_aluguel_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`ID_usuario`);
 COMMIT;
 

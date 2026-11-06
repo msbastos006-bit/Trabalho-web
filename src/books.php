@@ -1,7 +1,6 @@
 <?php
 session_start();
 $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 'Visitante';
-$idUsuario = isset($_SESSION['id_usuario']) ? htmlspecialchars($_SESSION['id_usuario']) : 'Desconhecido';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -21,7 +20,10 @@ $idUsuario = isset($_SESSION['id_usuario']) ? htmlspecialchars($_SESSION['id_usu
                 <span>Biblioteca</span>
             </a>
             <div class="user-nav">
-                <span class="user-greeting">Bem-vindo(a), <strong><?php echo $idUsuario; ?></strong>!</span>
+                <a href="perfil.php" class="user-avatar">
+                    <img src="img/user-avatar.png" alt="Avatar do usuário" loading="lazy">
+                </a>
+                <span class="user-greeting">Bem-vindo(a), <strong><?php echo $nomeUsuario; ?></strong>!</span>
                 <a href="logout.php" class="btn-logout" title="Encerrar sessão">Sair</a>
             </div>
         </div>
