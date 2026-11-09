@@ -108,6 +108,22 @@ header.app-header {
     gap: 1.25rem;
 }
 
+.user-avatar {
+    display: block;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    border: 1px solid rgba(231, 218, 218, 0.4);
+    border-radius: 50%;
+}
+
+.user-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .user-greeting {
     font-size: 0.95rem;
     color: var(--lavanderBlush);
@@ -358,6 +374,51 @@ header.app-header {
     font-size: 0.95rem;
 }
 
+.loans-total {
+    margin-bottom: 1rem;
+    color: var(--toffeBrowmn);
+    font-weight: 600;
+}
+
+.loans-table-wrapper {
+    overflow-x: auto;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.loans-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.loans-table th,
+.loans-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.loans-table th {
+    background-color: var(--lavanderBlush);
+    color: var(--deepWalnut);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.loans-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.loans-table .btn-borrow {
+    min-width: 90px;
+}
+
+.loans-empty {
+    margin-top: 1rem;
+}
+
 /* Grid de Livros */
 .books-grid {
     display: grid;
@@ -510,5 +571,10 @@ footer.app-footer p {
 
     .catalog-header h2 {
         font-size: 1.5rem;
+    }
+
+    .loans-table th,
+    .loans-table td {
+        padding: 0.75rem;
     }
 }
