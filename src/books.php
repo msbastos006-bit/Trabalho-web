@@ -20,6 +20,9 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                 <span>Biblioteca</span>
             </a>
             <div class="user-nav">
+                <a href="perfil.php" class="user-avatar">
+                    <img src="img/icons/user-avatar.png" alt="Avatar do usuário" loading="lazy" width ="48px" height="48px">
+                </a>
                 <span class="user-greeting">Bem-vindo(a), <strong><?php echo $nomeUsuario; ?></strong>!</span>
                 <a href="logout.php" class="btn-logout" title="Encerrar sessão">Sair</a>
             </div>
@@ -79,8 +82,12 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                         echo "<h3>" . $titulo . "</h3>";
                         echo "<p>Por " . $autor . "</p>";
                         echo "</div>";
-                        echo "<div class='livro-actions'>";
-                        echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "' class='btn-borrow'>Empréstimo</a>";
+                        echo "<div class='livro-actions'>";if ($livro['Quant'] == 0) {
+                            echo "<span class='btn-borrow'>Indisponível</span>";
+                        } else {
+                             echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] ."' class='btn-borrow'>Empréstimo</a>";
+                        }
+
                         echo "</div>";
                         echo "</div>";
                         echo "</article>";

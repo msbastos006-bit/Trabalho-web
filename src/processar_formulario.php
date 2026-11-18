@@ -12,7 +12,8 @@
             if (!empty($usuario)) {
                 session_start();
                 $_SESSION['email'] = $usuario['Email']; 
-                $_SESSION['nome'] = $usuario['Nome'];  
+                $_SESSION['nome'] = $usuario['Nome'];
+                $_SESSION['id_usuario'] = $usuario['ID_usuario'];
 
                 header ('Location: books.php');
             }else {
