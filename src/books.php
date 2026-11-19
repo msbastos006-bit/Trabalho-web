@@ -51,43 +51,28 @@ $nomeUsuario = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 
                         $autor = htmlspecialchars($livro['Autor']);
                         $capa = !empty($livro['imagem_capa']) ? 'img/capas/' . htmlspecialchars(trim($livro['imagem_capa'])) : 'img/default-book.png';
 
-                        if ($livro['Quant'] <= 0) {
-                            echo "<article class='livro'>";
-                            echo "<div class='livro-cover-wrapper'>";
-                            echo "<a href='book_details.php?id_livro=" . $livro['ID_livro'] . "'>";
-                            echo "<img src='" . $capa . "' alt='Capa de " . $titulo . "' loading='lazy'>";
-                            echo "</a>";
-                            echo "</div>";
-                            echo "<div class='livro-info'>";
-                            echo "<div>";
-                            echo "<h3>" . $titulo . "</h3>";
-                            echo "<p>Por " . $autor . "</p>";
-                            echo "</div>";
-                            echo "<div class='livro-actions '>";
-                            echo    "<span class='btn-borrow disabled'>Indisponível</span>";
-                            echo "</div>";
-                            echo "</div>";
-                            echo "</article>";
-                            continue;
-                        }
-                        
                         echo "<article class='livro'>";
+
                         echo "<div class='livro-cover-wrapper'>";
                         echo "<a href='book_details.php?id_livro=" . $livro['ID_livro'] . "'>";
                         echo "<img src='" . $capa . "' alt='Capa de " . $titulo . "' loading='lazy'>";
                         echo "</a>";
                         echo "</div>";
+
                         echo "<div class='livro-info'>";
+
                         echo "<div>";
                         echo "<h3>" . $titulo . "</h3>";
                         echo "<p>Por " . $autor . "</p>";
                         echo "</div>";
-                        echo "<div class='livro-actions'>";if ($livro['Quant'] == 0) {
-                            echo "<span class='btn-borrow'>Indisponível</span>";
-                        } else {
-                             echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] ."' class='btn-borrow'>Empréstimo</a>";
-                        }
 
+                        echo "<div class='livro-actions'>";
+
+                        if ($livro['Quant'] > 0) {
+                            echo "<a href='borrow.php?id_livro=" . $livro['ID_livro'] . "' class='btn-borrow'>Empréstimo</a>";
+                        } else {
+                            echo "<span class='btn-borrow disabled'>Indisponível</span>";
+                        }
                         echo "</div>";
                         echo "</div>";
                         echo "</article>";
